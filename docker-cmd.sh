@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Setup mail
 if [ -n "$MAIL_HOST" ]; then
@@ -15,7 +15,14 @@ EOF
     chmod 600 /etc/msmtprc
     chown www-data /etc/msmtprc
 
-    echo "sendmail_path = \"/usr/bin/msmtp -C /etc/msmtprc -a default -t\"" >> /usr/local/etc/php/conf.d/sendmail.ini
+    SENDMAIL="sendmail_path = \"/usr/bin/msmtp -C /etc/msmtprc -a default -t\""
+
+    FILE=/usr/local/etc/php/conf.d/sendmail.ini
+    
+    # check if already present in file
+    if [[ ! -f "$FILE" ] || [ grep -q "${SENDMAIL}" "$FILE" ]]; then
+        echo $SENDMAIL >> $FILE
+    fi
 fi
 
 apache2-foreground

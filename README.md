@@ -49,3 +49,8 @@ MAIL_PASS=58314b17c4e9ccc017b140969-0bc8f519-345fa13b
 ## But Why
 
 This will auto-configure working email and uploads.
+
+
+## Resources
+
+MSMTP: https://wiki.archlinux.org/title/Msmtp
