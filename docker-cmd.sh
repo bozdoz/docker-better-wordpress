@@ -18,9 +18,11 @@ EOF
     SENDMAIL="sendmail_path = \"/usr/bin/msmtp -C /etc/msmtprc -a default -t\""
 
     FILE=/usr/local/etc/php/conf.d/sendmail.ini
-    
+
     # check if already present in file
-    if [[ ! -f "$FILE" ] || [ grep -q "${SENDMAIL}" "$FILE" ]]; then
+    FOUND=$(grep "${SENDMAIL}" "${FILE}")
+
+    if [[ "$FOUND" = "" ]]; then
         echo $SENDMAIL >> $FILE
     fi
 fi
