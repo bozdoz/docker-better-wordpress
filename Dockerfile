@@ -9,7 +9,8 @@ RUN apt-get update && \
 COPY ./inc/uploads.ini /usr/local/etc/php/conf.d/uploads.ini
 
 # scripts to configure mail
-# rename to apache2- to work around entrypoint.sh L26
+# rename to apache2- to work around entrypoint.sh
+# see: https://github.com/docker-library/wordpress/blob/master/docker-entrypoint.sh#L26
 COPY docker-cmd.sh /usr/local/bin/apache2-init.sh
 
 RUN chmod 755 /usr/local/bin/apache2-init.sh

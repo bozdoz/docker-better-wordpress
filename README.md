@@ -19,7 +19,7 @@ services:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-whocares}
 
   wordpress:
-    build: .
+    image: bozdoz/better-wordpress
     env_file: .env
     depends_on:
       - mysql
