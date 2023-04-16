@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Test Docker Push
-        uses: bozdoz/auto-docker-push@v2
+      - uses: bozdoz/auto-docker-push@v2
         with:
           image: bozdoz/better-wordpress
           username: bozdoz
